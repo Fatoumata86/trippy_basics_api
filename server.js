@@ -7,14 +7,13 @@ const server = http.createServer(app);
 const exphbs = require("express-handlebars");
 const path = require("path");
 
-const jwt = require('jsonwebtoken');
-
 const port = process.env.PORT || 8000;
 
 const cors = require('cors');
 
 const hotelsRouter = require("./router/hotel");
 const loginRouter = require("./router/login");
+const authRouter = require('./router/authlogin');
 
 app.use(cors());
 
@@ -32,6 +31,7 @@ app.set('views', 'views');
 
 app.use(hotelsRouter);
 app.use(loginRouter);
+app.use(authRouter);
 
 server.listen(port, () => {
     console.log(`The server is started on port : ${port}`);
